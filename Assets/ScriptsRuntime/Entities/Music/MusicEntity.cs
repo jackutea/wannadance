@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace WD {
 
         int currentNote;
         float stageTime;
+
+        public event Action<ToneType> OnChangeToNoteHandle;
 
         public void Ctor() {
 
@@ -35,7 +38,7 @@ namespace WD {
 
         }
 
-        public void FixedTick(float fixdt) {
+        public void Loop(float fixdt) {
             var note = GetCurrent();
             if (note == null) {
                 return;
@@ -50,6 +53,7 @@ namespace WD {
                 player.clip = note.clip;
                 player.Stop();
                 player.Play();
+                OnChangeToNoteHandle.Invoke(note.toneType);
             }
 
             stageTime += fixdt;

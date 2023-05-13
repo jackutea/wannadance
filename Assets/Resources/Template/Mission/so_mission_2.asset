@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e8ad4695d52a64abe4cb2980cb160f, type: 3}
+  m_Name: so_mission_2
+  m_EditorClassIdentifier: 
+  mission:
+    typeID: 2
+    isTutorial: 0
+    binding_so_totalMissions:
+    - {fileID: 11400000, guid: ec0f1f732f91abf48b3cde131d6b4ec3, type: 2}
+    - {fileID: 11400000, guid: 7c5e731a91e5ba148a850d85e91f4512, type: 2}
+    - {fileID: 11400000, guid: 821aef0620da20847980a5988dcbaad8, type: 2}
+    - {fileID: 11400000, guid: 8bb8a2ec6a90f6c4e84424bf8693369a, type: 2}
+    - {fileID: 11400000, guid: 7c5e731a91e5ba148a850d85e91f4512, type: 2}
+    targetContinousCompletedCount: 8
+    continousCompletedCount: 0

@@ -7,6 +7,7 @@ namespace WD {
     public class MissionEntity {
 
         public int typeID;
+        public bool isTutorial;
 
         // 总任务
         [SerializeField] NoteSo[] binding_so_totalMissions;

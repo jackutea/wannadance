@@ -6,29 +6,33 @@ namespace WD {
 
     public class ClientMain : MonoBehaviour {
 
+        GameContext gameContext;
+        GameController gameController;
+
         [SerializeField] AssetsCore assetsCore;
-        [SerializeField] MusicEntity musicEntity;
-        [SerializeField] MissionSo mission1;
+
+        void Awake() {
+            this.gameContext = new GameContext();
+            this.gameController = new GameController();
+        }
 
         void Start() {
 
             QualitySettings.vSyncCount = 0;
             Application.targetFrameRate = 240;
 
-            musicEntity.Ctor();
+            gameContext.Inject(assetsCore);
+            gameController.Inject(gameContext);
 
-            var mission = mission1.mission;
-            mission.Init();
-
-            musicEntity.SetSequence(mission.TotalMissions);
+            gameController.EnterMission(gameContext.Config.originalMission);
 
             WDLog.Log("ClientMain.Start");
 
         }
 
         void FixedUpdate() {
-            float dt = Time.fixedDeltaTime;
-            musicEntity.FixedTick(dt);
+            float fixdt = Time.fixedDeltaTime;
+            gameController.FixedTick(fixdt);
         }
 
     }
