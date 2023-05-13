@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.gamearki.fpeasing": {
+      "version": "ssh://git@github.com/GameArki/FPEasing.git?path=Assets/com.gamearki.fpeasing#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "eca777f00a8bbbea3159581e2f1ed77161a62426"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.4",
       "depth": 1,

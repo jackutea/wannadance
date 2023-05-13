@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.gamearki.fpeasing": "ssh://git@github.com/GameArki/FPEasing.git?path=Assets/com.gamearki.fpeasing#main",
     "com.unity.feature.2d": "1.0.0",
     "com.unity.ide.vscode": "1.2.5",
     "com.unity.postprocessing": "3.2.2",

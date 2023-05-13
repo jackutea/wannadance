@@ -30,6 +30,11 @@ namespace WD {
 
         }
 
+        void Update() {
+            float dt = Time.deltaTime;
+            gameController.Tick();
+        }
+
         void FixedUpdate() {
             float fixdt = Time.fixedDeltaTime;
             gameController.FixedTick(fixdt);

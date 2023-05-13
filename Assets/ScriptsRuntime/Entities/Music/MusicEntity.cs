@@ -6,9 +6,6 @@ namespace WD {
 
     public class MusicEntity : MonoBehaviour {
 
-        const int BPM = 120;
-        const float BEAT = 60f / BPM;
-
         List<NoteModel> all;
         Dictionary<ToneType, AudioSource> players;
 
@@ -58,7 +55,7 @@ namespace WD {
 
             stageTime += fixdt;
 
-            float tar = BEAT * note.beatMultiple;
+            float tar = Config.BEAT * note.beatMultiple;
 
             if (stageTime >= tar) {
                 stageTime -= tar;

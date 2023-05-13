@@ -6,7 +6,7 @@ namespace WD {
 
         GameContext ctx;
 
-        public GameController() {}
+        public GameController() { }
 
         public void Inject(GameContext ctx) {
             this.ctx = ctx;
@@ -29,14 +29,15 @@ namespace WD {
 
             var coach = assets.GetRolePrefab();
             coach = GameObject.Instantiate(coach);
-            coach.Ctor();
             coach.transform.position = new Vector3(5, 3, 0);
+            coach.Ctor();
+            coach.isCoach = true;
             ctx.roleCoach = coach;
 
             var player = assets.GetRolePrefab();
             player = GameObject.Instantiate(player);
-            player.Ctor();
             player.transform.position = new Vector3(-5, 3, 0);
+            player.Ctor();
             ctx.rolePlayer = player;
 
             // Bind
@@ -65,16 +66,53 @@ namespace WD {
             ctx.missionEntity = null;
         }
 
+        public void Tick() {
+
+            ToneType inputToneType = ToneType.Empty;
+            if (Input.GetKey(KeyCode.W)) {
+                inputToneType = ToneType.Dong;
+            }
+            if (Input.GetKey(KeyCode.A)) {
+                inputToneType = ToneType.Ci;
+            }
+            if (Input.GetKey(KeyCode.S)) {
+                inputToneType = ToneType.Da;
+            }
+            if (Input.GetKey(KeyCode.E)) {
+                inputToneType = ToneType.Cicicici;
+            }
+            if (Input.GetKey(KeyCode.D)) {
+                inputToneType = ToneType.Duang;
+            }
+
+            if (inputToneType != ToneType.Empty) {
+                ctx.inputToneType = inputToneType;
+                ctx.hasInput = true;
+            }
+
+        }
+
         public void FixedTick(float fixdt) {
+
             if (ctx.musicEntity != null) {
                 ctx.musicEntity.Loop(fixdt);
             }
+
             if (ctx.roleCoach != null) {
                 ctx.roleCoach.Loop(fixdt);
             }
+
             if (ctx.rolePlayer != null) {
                 ctx.rolePlayer.Loop(fixdt);
             }
+
+            ToneType inputToneType = ctx.inputToneType;
+            if (ctx.hasInput) {
+                ctx.hasInput = false;
+                ctx.rolePlayer.ChangeNote(inputToneType);
+                ctx.inputToneType = ToneType.Empty;
+            }
+
         }
 
     }

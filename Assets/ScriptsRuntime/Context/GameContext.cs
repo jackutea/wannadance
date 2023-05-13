@@ -13,8 +13,12 @@ namespace WD {
         public RoleEntity roleCoach;
         public RoleEntity rolePlayer;
 
+        public ToneType inputToneType;
+        public bool hasInput;
+
         public GameContext() {
             this.config = new Config();
+            this.inputToneType = ToneType.Empty;
         }
 
         public void Inject(AssetsCore assetsCore) {
